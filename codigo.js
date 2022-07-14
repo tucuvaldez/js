@@ -1,89 +1,120 @@
-const suma = (a , b , c) => a + b + c
-const suma2 = (a, b) => a + b
-const resta = (a , b) => a - b 
-const iva = x => x * 0.21
-let precioVino = 0
-const descuento = 9.99
-const vinoPremium = 99.99
-let precioFinal = resta (suma(precioVino , vinoPremium , iva (precioVino)) , descuento)
+
+let descuento = 5.99
+/* Creo un Objeto */
+class Vino {
+    constructor(tipoVino, varietal, precio, id) {
+        this.tipoVino = tipoVino
+        this.varietal = varietal
+        this.precio = precio
+        this.id = id
+    }
+}
+const vino1 = new Vino("tinto", "malbec", 59.99, 1)
+const vino2 = new Vino("tinto", "cabernet", 49.99, 2)
+const vino3 = new Vino("tinto", "sirah", 69.99, 3)
+const vino4 = new Vino("blanco", "chardonnay", 59.99, 4)
+const vino5 = new Vino("blanco", "chenin", 49.99, 5)
+const vino6 = new Vino("blanco", "cosecha tardia", 69.99, 6)
+/* Creo Array del Objeto para poder buscar */
+let listaVino = [vino1, vino2, vino3, vino4, vino5, vino6]
+console.log(listaVino)
+let tintos = listaVino.filter(vino => vino.tipoVino == "tinto")
+let varietalesTinto = tintos.map(vino => vino.varietal)
+console.log(varietalesTinto)
+let blanco = listaVino.filter(vino => vino.tipoVino == "blanco")
+let varietalesBlanco = blanco.map(vino => vino.varietal)
+// const varietales = listaVino.map(vino => vino.varietal) // Genero un ARRAY "varietales" con el varietal de cada vino 
+
+/* Creo un Array de compra para carrito E-commerce donde hago el push de las elecciones */
+let compra = []
 
 let nombre = prompt("Ingrese su nombre: ");
 alert("Hola " + nombre + "!! Bienvenido a la vinoteca Hygge")
-let eleccion = prompt("Ingrese su tipo de vino - Blanco o Tinto")
-while(eleccion != "blanco" && eleccion != "tinto"){
-    alert("La opcion es incorrecta")
-    eleccion = prompt("Ingrese su tipo de vino - Blanco o Tinto")
-}
-if(eleccion == "tinto"){
-    let tinto = prompt("Que varietal te gustaria? - Cabernet, Malbec, Sirah").toLowerCase()
-    while(tinto != "cabernet" && tinto != "malbec" && tinto != "sirah"){
-        alert("La opcion es incorrecta")
-        eleccion = prompt("Que varietal te gustaria? - Cabernet, Malbec, Sirah")
+comprarVino() //Creo funcion para comprar 
+function comprarVino() {
+    tipoVino = prompt("Que vino te gustaria? Blanco o Tinto").toLowerCase()
+    while (tipoVino != "blanco" && tipoVino != "tinto") {
+        alert("Intente nuevamente")
+        tipoVino = prompt("Que vino te gustaria? Blanco o Tinto").toLowerCase()
     }
-    if (tinto == "cabernet"){
-        precioVino = 59.99
-    }if (tinto == "malbec"){
-        precioVino = 69.99
-    }if (tinto == "sirah"){
-        precioVino = 49.99
-    }
-while(tinto != "pagar"){
-    switch(tinto){
-        case "cabernet":
-            alert("Elegiste Cabernet. Excelente eleccion!")
-            break
-        case "malbec":
-            alert("Elegiste Malbec. Excelente eleccion! ")
-            break
-        case "sirah":
-            alert("Elegiste Sirah. Excelente eleccion! ")
-            break
-        default:
-            alert("Por favor intenta de nuevo")
-            break     
-    }
-    tinto = prompt("Poné pagar para ir al carrito").toLowerCase()
-} 
 
-}else{
-    let blanco = prompt("Que varietal te gustaria? - Chardonnay o Cosecha Tardia").toLowerCase()
-    while(blanco != "chardonnay" && blanco != "cosecha" && blanco != "cosecha tardia"){
-        alert("La opcion es incorrecta")
-        blanco = prompt("Que varietal te gustaria? - Chardonnay o Cosecha Tardia")
-    }
-    if (blanco == "chardonnay"){
-        precioVino = 65.99
-    }
-    if (blanco == "cosecha tardia"){
-        precioVino = 56.99
-    }
-    while(blanco != "pagar"){
-        switch(blanco){
-            case "chardonnay":
-                alert("Elegiste Chardonnay. Excelente eleccion! ")
-                break
-            case "cosecha tardia":
-                alert("Elegiste Cosecha Tardia. Excelente eleccion! ")
-                break
-            default:
-                alert("Por favor intenta de nuevo")
-                break     
+    if (tipoVino == "tinto") {
+        varietal = prompt("Que varietal? Sirah - Malbec - Cabernet").toLowerCase()
+        let buscar = listaVino.find(el => el.varietal == varietal)
+        console.log(buscar)
+        //Chequea que el varietal ingresado por prompt, NO (!) coincida ningun parametro (varietal), dentro del Array (varietales)
+        while (!varietalesTinto.includes(varietal)) {
+            alert("Intente nuevamente")
+            varietal = prompt("Que varietal? Sirah - Malbec - Cabernet").toLowerCase()
+            let buscar = listaVino.find(el => el.varietal == varietal)
+            console.log(buscar)
         }
-        blanco = prompt("Poné pagar para ir al carrito").toLowerCase()
+        /* De acuerdo a la eleccion realizo un push al carrito */
+
+        const vino = listaVino.find(vino => vino.varietal == varietal)//Busca dentro de la Lista vino, que coincida el varietal con el ingresado por prompt
+        compra.push(vino)
+        alert("Elegiste " + varietal + ".Excelente eleccion")
+
+    } else {
+        varietal = prompt("Que varietal? Chenin - Cosecha Tardia - Chardonnay").toLowerCase()
+        let buscar = listaVino.find(el => el.varietal == varietal)
+        console.log(buscar)
+
+        while (!varietalesBlanco.includes(varietal)) {
+            alert("Intente nuevamente")
+            varietal = prompt("Que varietal? Chenin - Cosecha Tardia - Chardonnay").toLowerCase()
+        }
+        /* De acuerdo a la eleccion realizo un push al carrito */
+
+        const vino = listaVino.find(vino => vino.varietal == varietal)
+        compra.push(vino)
+        alert("Elegiste " + varietal + ".Excelente eleccion")
+
+    }
+    let agregar = prompt("Te gustaria agregar más al carrito? (SI / NO )").toLowerCase()
+    while (agregar != "si" && agregar != "no") {
+        alert("Respuesta invalida")
+        agregar = prompt("Te gustaria agregar más al carrito? (SI / NO )").toLowerCase()
+    }
+    if (agregar == "si") {
+        comprarVino()
+    } else {
+        const precioFinal = compra.reduce((acc, el) => acc + el.precio * 1.21 - descuento, 0)
+        alert("El valor final es de $" + Math.round(precioFinal))
+        console.log(Math.round(precioFinal))
     }
 }
 
 
-let clase = prompt("Te gustaria nuetra botella premium? (SI / NO )").toLowerCase()
-while(clase != "si" && clase != "no"){
-    alert("Respuesta invalida")
-    clase = prompt("Te gustaria nuetra botella premium? (SI / NO )").toLowerCase()
+//Funcion para eliminar productos en el carrito con indexOf, aplicado al map (para encontrar un parametro especifico)
+function eliminarProducto(prodAEliminar) {
+    const index = compra.map(vino => vino.varietal).indexOf(prodAEliminar)
+    compra.splice(index, 1)
 }
 
-if(clase == "si"){
-    precioFinal = resta (suma(precioVino , vinoPremium , iva (precioVino)) , descuento)
-    alert("El valor final es de  " + precioFinal)
-}else{
-    precioFinal = resta (suma2(precioVino , iva(precioVino)) , descuento)
-    alert("El valor final es de  " + precioFinal)
+consultaEliminar()
+function consultaEliminar() {
+    if (compra.length > 0) {
+        let varietalCompra = "" //Genero una variante con string vacio, recorro el carrito y le agrego el nombre del parametro
+        for (const vino of compra) {
+            varietalCompra += vino.varietal + ", "
+        }
+        let consulta = prompt("El carrito tiene actualmente " + varietalCompra + "desea eliminar un producto? (Si/No)")
+        if (consulta == "si") {
+            prodAEliminar = prompt("Que varietal desea eliminar?")
+            console.log(prodAEliminar)
+            eliminarProducto(prodAEliminar)
+            console.log(compra)
+            const precioFinal = compra.reduce((acc, el) => acc + el.precio * 1.21 - descuento, 0)
+            alert("El valor final ahora es de $" + Math.round(precioFinal))
+            consultaEliminar()
+
+        } else {
+            const precioFinal = compra.reduce((acc, el) => acc + el.precio * 1.21 - descuento, 0)
+            alert("El valor final ahora es de $" + Math.round(precioFinal))
+            console.log(Math.round(precioFinal))
+        }
+    }else{
+        alert("El carrito no tiene productos")
+    }
 }
