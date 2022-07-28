@@ -1,26 +1,27 @@
 class Vino {
-    constructor(marca, tipoVino, varietal, precio, img, id) {
+    constructor(marca, tipoVino, varietal, precio, img, id, stock) {
         this.marca = marca
         this.tipoVino = tipoVino
         this.varietal = varietal
         this.precio = precio
         this.img = img
         this.id = id
+        this.stock = stock
     }
 }
-const vino1 = new Vino("Los Aroldos", "tinto", "Malbec", 1200,"./img/vino.jpg", 1)
-const vino2 = new Vino("Los Aroldos", "tinto", "Cabernet Sauvignon", 900,"./img/vino.jpg", 2)
-const vino3 = new Vino("Los Aroldos", "tinto", "Syrah", 1100,"./img/vino.jpg" ,3)
-const vino4 = new Vino("Los Aroldos", "blanco", "Chardonnay", 700,"./img/vino.jpg", 4)
-const vino5 = new Vino("Los Aroldos", "blanco", "Chenin", 900,"./img/vino.jpg" ,5)
-const vino6 = new Vino("El Esteco", "tinto", "Syrah", 950,"./img/vino.jpg" ,6)
-const vino7 = new Vino("Los Aroldos", "blanco", "Cosecha Tardia", 800,"./img/vino.jpg", 7)
-const vino8 = new Vino("Las Perdices", "tinto", "Malbec", 1300,"./img/vino.jpg" ,8)
-const vino9 = new Vino("Las Perdices", "tinto", "Syrah", 1250,"./img/vino.jpg", 9)
-const vino10 = new Vino("Las Perdices", "tinto", "Cabernet Franc", 1150,"./img/vino.jpg" ,10)
-const vino11 = new Vino("Las Perdices", "blanco", "Cosecha Tardia", 1200,"./img/vino.jpg" ,11)
-const vino12 = new Vino("Las Perdices", "blanco", "Moscatel", 900,"./img/vino.jpg", 12)
-const vino13 = new Vino("Las Perdices", "blanco", "Sauvignon Blanc", 1100,"./img/vino.jpg" ,13)
+const vino1 = new Vino("Los Aroldos", "tinto", "Malbec", 1200,"./img/vino.jpg", 1, 15)
+const vino2 = new Vino("Los Aroldos", "tinto", "Cabernet Sauvignon", 900,"./img/vino.jpg", 2, 10)
+const vino3 = new Vino("Los Aroldos", "tinto", "Syrah", 1100,"./img/vino.jpg" ,3, 12)
+const vino4 = new Vino("Los Aroldos", "blanco", "Chardonnay", 700,"./img/vino.jpg", 4, 22)
+const vino5 = new Vino("Los Aroldos", "blanco", "Chenin", 900,"./img/vino.jpg" ,5, 6)
+const vino6 = new Vino("El Esteco", "tinto", "Syrah", 950,"./img/vino.jpg" ,6, 9)
+const vino7 = new Vino("Los Aroldos", "blanco", "Cosecha Tardia", 800,"./img/vino.jpg", 7, 12)
+const vino8 = new Vino("Las Perdices", "tinto", "Malbec", 1300,"./img/vino.jpg" ,8, 24)
+const vino9 = new Vino("Las Perdices", "tinto", "Syrah", 1250,"./img/vino.jpg", 9, 12)
+const vino10 = new Vino("Las Perdices", "tinto", "Cabernet Franc", 1150,"./img/vino.jpg" ,10, 16)
+const vino11 = new Vino("Las Perdices", "blanco", "Cosecha Tardia", 1200,"./img/vino.jpg" ,11, 18)
+const vino12 = new Vino("Las Perdices", "blanco", "Moscatel", 900,"./img/vino.jpg", 12, 18)
+const vino13 = new Vino("Las Perdices", "blanco", "Sauvignon Blanc", 1100,"./img/vino.jpg" ,13, 20)
 const vino14 = new Vino("Las Perdices", "blanco", "Chenin Blanc", 1300,"./img/vino.jpg" ,14)
 const vino15 = new Vino("Los Alamos", "tinto", "Cabernet Franc", 1500,"./img/vino.jpg" ,15)
 const vino16 = new Vino("Los Alamos", "tinto", "Pinot Noir", 1400,"./img/vino.jpg",16)

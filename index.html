@@ -11,6 +11,7 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Alice&family=Libre+Baskerville&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
+    <script src="https://use.fontawesome.com/37752a65da.js"></script>
 </head>
 
 <body class="container background ">
@@ -34,12 +35,12 @@
 
                     </ul>
                 </div>
+                <button type="button" id="botonCarrito" class="btn " data-toggle="modal"
+                    data-target="#exampleModal">
+                    <img src="../img/baseline_shopping_cart_black_24dp.png" alt="" srcset="">
+                    <p id="cantidadCarrito">0</p>
+                </button>
             </div>
-            <button type="button" class="btn " onclick="mostrarCarrito()" data-toggle="modal"
-                data-target="#exampleModal">
-                <img src="../img/baseline_shopping_cart_black_24dp.png" alt="" srcset="">
-                <p id="cantidadCarrito">0</p>
-            </button>
 
         </nav>
 
@@ -77,9 +78,11 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor dolores nisi debitis</p>
                 </div>
             </div>
+            <div>
+                <input id="buscar" type="input" placeholder="Buscar por varietal" class="form-control ds-input mb-5">
+            </div>
 
-
-            <div class="container row" id="contenedorProductos">
+            <div class="container row " id="contenedorProductos">
                 <!-- <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="./img/vino.jpg" alt="Card image cap">
                     <div class="card-body">
@@ -93,12 +96,11 @@
             </div>
 
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade" id="exampleModal" >
+            <div class="modal-dialog modal-lg"> >
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Carrito de compras</h5>
+                        <h5 class="modal-title" id="">Carrito de compras</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -138,7 +140,8 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script src="./asset/stock.js"></script>
-    <script src="./asset/codigo.js"></script>
+    <!-- <script src="./asset/codigo.js"></script> -->
+    <script src="./asset/apps.js"></script>
 </body>
 
 </html>

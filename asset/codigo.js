@@ -119,57 +119,77 @@
 //     }
 // }
 
-let contenedorProductos = document.getElementById("contenedorProductos")
-let carrito = []
-let contenedorCarrito = document.getElementById("contenedorCarrito")
-let total = document.getElementById("precioTotal")
-mostrarProducto()
+// let contenedorProductos = document.getElementById("contenedorProductos")
+// let carrito = []
+// let contenedorCarrito = document.getElementById("contenedorCarrito")
+// let total = document.getElementById("precioTotal")
+// let botonCarrito = document.getElementById("botonCarrito")
+// mostrarProducto()
+// // let vinoTinto = listaVino.filter(vino => vino.tipoVino == "tinto")
+// // let vinoBlanco = listaVino.filter(vino => vino.tipoVino == "blanco")
+// // mostrarProducto(vinoTinto)
+// // mostrarProducto(vinoBlanco)
+// function mostrarProducto() {
+//     contenedorProductos.innerHTML = ""
+//     listaVino.forEach(item => {
 
-function mostrarProducto() {
-    // contenedorProductos.innerHTML = ""
-    listaVino.forEach(item => {
+//         let div = document.createElement("div")
+//         div.className = "producto col-12 col-md-4 mt-3"
+//         div.innerHTML = `<div class="card" style="width: 18rem;">
+//                             <img class="card-img-top" src="${item.img}">
+//                             <div class="card-body">
+//                                 <h4 class="card-title">${item.marca} </h4>
+//                                 <h5 class="card-title">${item.varietal} </h5>
+//                                 <p class="card-text">El placer de disfrutar un buen vino</p>
+//                                 <p>$ ${item.precio}</p>
+//                                 <a href="#" onclick="agregarCarrito(${item.id})" class="btn" id="botonProducto">Agregar al carrito</a>
+//                             </div>
+//                         </div>`
+//         contenedorProductos.appendChild(div)
+//     })
+// }
 
-        let div = document.createElement("div")
-        div.className = "producto col-12 col-md-4 mt-3"
-        div.innerHTML = `<div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="${item.img}">
-                            <div class="card-body">
-                                <h4 class="card-title">${item.marca} </h4>
-                                <h5 class="card-title">${item.varietal} </h5>
-                                <p class="card-text">El placer de disfrutar un buen vino</p>
-                                <p>$ ${item.precio}</p>
-                                <a href="#" onclick="agregarCarrito(${item.id})" class="btn" id="botonProducto">Agregar al carrito</a>
-                            </div>
-                        </div>`
-        contenedorProductos.appendChild(div)
-    })
-}
-
-function agregarCarrito(idVino) {
-    let vino = listaVino.find(vino => vino.id === idVino)
-    carrito.push(vino)
-    let cantidadCarrito = document.getElementById("cantidadCarrito")
+// function agregarCarrito(idVino) {
     
-    actualizarCarrito()
+//     let vino = listaVino.find(vino => vino.id === idVino)
+//     carrito.push(vino)
+//     let cantidadCarrito = document.getElementById("cantidadCarrito")
+//     cantidadCarrito.innerText = carrito.length
+//     actualizarCarrito()
 
-    console.log(carrito)
-}
+//     console.log(carrito)
+// }
 
-function mostrarCarrito() {
-    
-    carrito.forEach(item => {
-        let div = document.createElement("div")
-        div.className = "contenedorCarrito d-flex"
-        div.innerHTML = `<p class="col-4 align-items-end">${item.marca}</p>
-                        <p class="col-4 align-items-end">${item.varietal}</p>
-                        <p class="col-4 align-items-end">Precio: $${item.precio} </p>`
-        contenedorCarrito.appendChild(div)
-    })
-}
+// botonCarrito.addEventListener("click", mostrarCarrito)
 
-function  actualizarCarrito (){
-    cantidadCarrito.innerText = carrito.length
-    total.innerText = carrito.reduce((acc, el)=> acc + el.precio, 0)
-}
+// function mostrarCarrito() {
+//     contenedorCarrito.innerHTML = ""
+//     carrito.forEach(item => {
+//         let div = document.createElement("div")
+//         div.className = "contenedorCarrito d-flex"
+//         div.innerHTML = `<div class="prodCarrito">
+//                             <p class="col-4 align-items-end">${item.marca}</p>
+//                             <p class="col-4 align-items-end">${item.varietal}</p>
+//                             <p class="col-4 align-items-end">Precio: $${item.precio} </p>                      
+//                             <button class="remove-btn"><i class="fa fa-trash-o fa-lg">Borrar</i></button>
+//                         </div>`
+//         contenedorCarrito.appendChild(div)
+//         let botonEliminar = document.querySelectorAll(".remove-btn")
+//         for(let boton of botonEliminar){
+//             boton.addEventListener("click", borrarElemento)
+//         }
+//     })
+// }
+
+// function borrarElemento(e){
+//     btn = e.target
+//     btn.parentElement.parentElement.remove()
+//     actualizarCarrito()
+// }
+
+// function  actualizarCarrito (){
+//     cantidadCarrito.innerText = carrito.length
+//     total.innerText = carrito.reduce((acc, el)=> acc + el.precio, 0)
+// }
 //Estoy necesitando ayuda para que el carrito no imprima los elementos que tiene dentro, con cada click, no me doy cuenta como resetearlo 
 //para que imprima cada elemento, y no todos los elementos con cada click!! 

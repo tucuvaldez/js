@@ -9,6 +9,7 @@ header{
     margin: 10px;
     width: 250px;
     height: 250px; 
+    
 }
 .footer{
     background-color: rgb(149, 50, 50)
@@ -27,12 +28,32 @@ header{
 .btn img {
     width: 28px; height: 28px;
 }
-#botonProducto{
+.btnProd{
     height: 48px;
     padding: 8px;
+    margin-right: 10px;
+    color: #fff;
+    background-color: rgb(149, 50, 50);
+    border-color: rgb(130, 39, 48);
+    border-radius: 4px;
+}
+
+.prodEnCarrito{
+    justify-content: space-between;
+    
+}
+.remove-btn{
+    border-radius: 4px;
+    width: fit-content;
+    height: fit-content;
+    justify-content: center;
 }
 #botonCerrar{
     padding: 0px 10px;
     margin: 10px;
     height: 44px;
+}
+
+.filtrar {
+    display: none
 }
