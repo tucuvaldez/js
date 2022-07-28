@@ -110,7 +110,7 @@ function cart(itemId) {
 }
 
 function filtrar(e){
-    
+    //solo me filtra por uno solo, cuando agrego el or || no me funciona, no se que hice mal
     let encontrado = listaVino.filter(vino => (vino.varietal).toLowerCase().includes(e.target.value)) || (vino.marca).toLowerCase().includes(e.target.value)
     mostrarProducto(encontrado)
     
