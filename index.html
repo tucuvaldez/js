@@ -31,7 +31,7 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav ">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="./index.html">INICIO</a>
+                            <a class="nav-link active" aria-current="page" href="./index.html">HOME</a>
                         </li>
 
                     </ul>
@@ -44,22 +44,26 @@
 
         </nav>
 
+        <div class="fondo backgroundPack">
+
+        </div>
     </header>
 
     <!-- Comienza el contenido principal de la pagina, todos los servicios que se ofrece -->
 
     <main class="container">
 
-        <div class="container">
+        <div class="container modalPack ">
 
-            <div class=" fondo">
-                
-
-
-            </div>
             <div>
-                <input id="buscar" type="input" placeholder="Buscar por varietal o marca"
-                    class="form-control ds-input mb-5">
+                <input id="buscar" type="input" placeholder="Filter..." class="form-control ds-input mb-3">
+                
+                <h3 style="color:white">Filter By:</h3>
+                
+                <input class="form-check-input mt-0" id="check" type="checkbox" name="vinoTinto" aria-label="Checkbox for following text input">
+                <checkbox style="color:white" class="">Vino Tinto</checkbox>
+                <input class="form-check-input mt-0 " id="check" type="checkbox" name="vinoBlanco" aria-label="Checkbox for following text input">
+                <checkbox style="color:white">Vino Blanco</checkbox>
             </div>
 
 
@@ -77,25 +81,28 @@
             </div>
 
         </div>
-        <div class="modal fade" id="exampleModal">
-            <div class="modal-dialog modal-lg"> >
-                <div class="modal-content">
+        <div class="modal fade " id="exampleModal">
+            <div class="modal-dialog modal-lg ">
+                <div class="modal-content bg-dark">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="">Carrito de compras</h5>
+                        <h5 class="modal-title" id="">Shopping Cart</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body row" id="contenedorCarrito">
-                        <!-- <p>Marca de vino</p>
-                    <p>Varietal del vino</p>
-                    <p>Precio</p> -->
+                        
+                        <!-- <p class="col-3 align-items-end"></p>
+                            <p class="col-3 align-items-end"></p>
+                            <p class="col-2 align-items-end"> </p>  
+                            <p id="" class="col-3 align-items-end"></p>                    
+                            <button id='' class="col-1 btn-danger remove-btn"><i class="fa fa-trash-o fa-lg"></i></button> -->
                     </div>
                     <div class="modal-footer">
-                        <p class="cantTotal">Cantidad Total: <span id="cantEnCart">0</span></p>
-                        <button type="button" class="btnLimpiar " data-dismiss="modal" id="botonEliminar">Limpiar Carrito</button>
-                        <p class="precioProducto">Precio total: $<span id="precioTotal">0</span></p>
-                        <button type="button" class="btn " data-dismiss="modal" id="botonCerrar">Cerrar</button>
+                        <p class="cantTotal">Total Quantity: <span id="cantEnCart">0</span></p>
+                        <button type="button" class="btnLimpiar " data-dismiss="modal" id="botonEliminar">Clear</button>
+                        <p class="precioProducto">Total Price: $<span id="precioTotal">0</span></p>
+                        <button type="button" class="btn " data-dismiss="modal" id="botonCerrar">Close</button>
                     </div>
                 </div>
             </div>

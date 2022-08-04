@@ -9,6 +9,7 @@ console.log(vinoTinto);
 const vinoBlanco = listaVino.filter(vino => vino.tipoVino == "blanco");
 console.log(vinoBlanco);
 
+
 function setStorage(clave, valor) {
     localStorage.setItem(clave, JSON.stringify(valor))
 
@@ -16,7 +17,6 @@ function setStorage(clave, valor) {
 function getStorage(clave) {
     return JSON.parse(localStorage.getItem(clave)) || []
 }
-
 
 
 function mostrarProducto(listaVino) {
@@ -30,9 +30,9 @@ function mostrarProducto(listaVino) {
         <div class="card-body">
         <h4 class="card-title">${item.marca} </h4>
         <h5 class="card-title">${item.varietal} </h5>
-        <p class="card-text">El placer de disfrutar un buen vino</p>
+        <p class="card-text">Enjoy the taste of the finest wine</p>
         <p>$ ${item.precio}</p>
-        <button id="${item.id}" class="btnProd">Agregar al carrito</button>
+        <button id="${item.id}" class="btnProd">Add to Cart</button>
         </div>
         </div>`
         contenedorProductos.appendChild(div);
@@ -43,6 +43,9 @@ function mostrarProducto(listaVino) {
         })
     })
 }
+
+
+
 // mostrarProducto(vinoTinto)
 // mostrarProducto(vinoBlanco)
 mostrarProducto(listaVino);
@@ -55,9 +58,9 @@ function cart(vino) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'No tenemos más stock de este vino!',
-            
-          })
+            text: 'Sorry, we ran out of stock!',
+
+        })
     } else {
 
         vino.stock--
@@ -80,24 +83,26 @@ function cart(vino) {
 
 function mostrarCarrito() {
     let carrito = getStorage('carrito');
-    contenedorCarrito.innerHTML = "";
-    carrito.forEach(vino => {
-        let div = document.createElement("div");
-        div.className = "prodEnCarrito row";
-        div.innerHTML = `
+    
+        contenedorCarrito.innerHTML = "";
+        carrito.forEach(vino => {
+            let div = document.createElement("div");
+            div.className = "prodEnCarrito row";
+            div.innerHTML = `
                             <p class="col-3 align-items-end">${vino.marca}</p>
                             <p class="col-3 align-items-end">${vino.varietal}</p>
                             <p class="col-2 align-items-end">Precio: $${vino.precio} </p>  
-                            <p id="cant${vino.id}" class="col-3 align-items-end">Cantidad: ${vino.cantidad}</p>                    
+                            <p id="cant${vino.id}" class="col-3 align-items-end">Quantity: ${vino.cantidad}</p>                    
                             <button id='button${vino.id}' class="col-1 btn-danger remove-btn"><i class="fa fa-trash-o fa-lg"></i></button>
                         `
-        contenedorCarrito.appendChild(div);
+            contenedorCarrito.appendChild(div);
 
-        let btnEliminar = document.getElementById(`button${vino.id}`);
-        btnEliminar.addEventListener('click', () => {
-            checkDelete(vino, btnEliminar);
+            let btnEliminar = document.getElementById(`button${vino.id}`);
+            btnEliminar.addEventListener('click', () => {
+                checkDelete(vino, btnEliminar);
+            })
         })
-    })
+    
 }
 
 function eliminar(vino, btnEliminar) {
@@ -119,40 +124,39 @@ function eliminar(vino, btnEliminar) {
         btnEliminar.parentElement.remove();
         console.log(carrito);
     }
+
     vino.stock++
     contadorCarrito();
 }
 
-function checkDelete(vino, btnEliminar, ) {
+function checkDelete(vino, btnEliminar) {
     Swal.fire({
-        title: 'Estás seguro de eliminar este producto?',
-        text: "Se elimininará, " + vino.marca + " - " + vino.varietal,
+        title: 'Are you sure you want to delete this item?',
+        text: "It is going to be deleted, " + vino.marca + " - " + vino.varietal,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, eliminar!',
-        cancelButtonText: 'Cancelar'
+        confirmButtonText: 'Yes, delete!',
+        cancelButtonText: 'Cancel'
     }).then((result) => {
         if (result.isConfirmed) {
-            eliminar(vino, btnEliminar) 
-        } 
+            eliminar(vino, btnEliminar)
+        }
     })
 }
 
-function limpiar(){
+function limpiar() {
     let carrito = getStorage('carrito');
     botonEliminar.addEventListener('click', () => {
-        
+
         localStorage.clear(carrito);
 
-        contadorCarrito();     
+        contadorCarrito();
         mostrarCarrito();
     })
 }
-
 limpiar()
-
 
 function filtrar(e) {
     //solo me filtra por uno solo, cuando agrego el or || no me funciona, no se que hice mal
@@ -161,6 +165,7 @@ function filtrar(e) {
 
 }
 window.addEventListener('input', filtrar);
+
 
 function contadorCarrito() {
     let carrito = getStorage('carrito');
