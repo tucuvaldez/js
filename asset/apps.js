@@ -28,7 +28,8 @@ const obtenerDatos = async () => {
     try {
         let response = await fetch('../asset/stock.json');
         let data = await response.json();
-        data.forEach(item => {
+        let productos = data
+        productos.forEach(item => {
             console.log(item.stock)
             contenedorProductos.innerHTML += "";
             let div = document.createElement("div");
