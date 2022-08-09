@@ -1,0 +1,22 @@
+[
+{"marca": "Los Haroldos","tipoVino": "tinto","varietal" : "Malbec","precio": 1200,"img": "./img/los-haroldos-estate-malbec-mrbeef.jpg","id" :  1,"stock": 15},
+{"marca": "Los Haroldos","tipoVino": "tinto","varietal" : "Cabernet Sauvignon","precio": 900,"img": "./img/Los-haroldos-cabernet.png","id" :  2, "stock":10},
+{"marca": "Los Haroldos","tipoVino": "tinto","varietal" : "Bonarda","precio": 1100,"img": "./img/Los-Haroldos-Bonarda.png" ,"id" : 3,"stock": 12},
+{"marca": "Los Haroldos","tipoVino": "blanco","varietal" : "Chardonnay","precio": 700,"img": "./img/los-haroldos-chardonnay.png","id" :  4,"stock": 22},
+{"marca": "Los Haroldos","tipoVino": "blanco","varietal" : "Chenin Dulce","precio": 900,"img": "./img/los-haroldos-chenindulce.png" ,"id" : 5,"stock": 6},
+{"marca": "El Esteco - Don David","tipoVino": "tinto","varietal" : "Syrah","precio": 950,"img": "./img/el-esteco-syrah.jpg" ,"id" : 6,"stock": 9},
+{"marca": "Santa Julia","tipoVino": "blanco","varietal" : "Tardío","precio": 800,"img": "./img/Vino-Santa-Julia-Cosecha.jpg","id" :  7, "stock":12},
+{"marca": "Las Perdices","tipoVino": "tinto","varietal" : "Malbec","precio": 1300,"img": "./img/las-perdices-malbec.png" ,"id" : 8, "stock":24},
+{"marca": "Las Perdices","tipoVino": "tinto","varietal" : "Cabernet Sauvignon","precio": 1250,"img": "./img/las-perdices-cabernet.png","id" :  9,"stock": 12},
+{"marca": "Las Perdices","tipoVino": "tinto","varietal" : "Cabernet Franc","precio": 1150,"img": "./img/las-perdices-cabernetFranc.png" ,"id" : 10,"stock": 16},
+{"marca": "Las Perdices","tipoVino": "blanco","varietal" : "Viognier","precio": 1200,"img": "./img/perdices-viognier.jpg" ,"id" : 11, "stock":18},
+{"marca": "Las Perdices","tipoVino": "blanco","varietal" : "Sauvignon Blanc","precio": 900,"img": "./img/sauvignon-blanc.png", "id" : 12, "stock":18},
+{"marca": "Las Perdices","tipoVino": "blanco","varietal" : "Sweety","precio": 1100,"img": "./img/las-perdices-sweety.png" ,"id" : 13,"stock": 20},
+{"marca": "Rutini","tipoVino": "blanco","varietal" : "Chardonnay","precio": 1300,"img": "./img/Rutini_Chardonnay.jpeg" ,"id" : 14, "stock": 6},
+{"marca": "Alamos","tipoVino": "tinto","varietal" : "Cabernet","precio": 1500,"img": "./img/alamos-cabernet.jpg" ,"id" : 15, "stock": 6},
+{"marca": "Alamos","tipoVino": "tinto", "varietal" :"Malbec Reserva","precio": 1400,"img": "./img/alamos-malbec.png","id" : 16, "stock": 4},
+{"marca": "Alamos","tipoVino": "blanco","varietal" : "Torrontes","precio": 1350,"img": "./img/alamos-torrontes.png" ,"id" : 17, "stock": 5},
+{"marca": "Alamos","tipoVino": "blanco","varietal" : "Semillon","precio": 1250,"img": "./img/alamos-chardonnay.jpg","id" : 18, "stock": 6},
+{"marca": "El Esteco","tipoVino": "tinto","varietal" : "Cabernet Sauvignon","precio": 1350,"img": "./img/elestecocabernetsauvignon.jpg" ,"id" : 19, "stock": 3},
+{"marca": "El Esteco","tipoVino": "blanco", "varietal" :"Blanc de Blancs","precio": 1500,"img": "./img/elesteco-blanc.png","id" :  20, "stock": 2}
+]

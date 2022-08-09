@@ -18,15 +18,17 @@
 }
 
 header {
-    
     align-items: center;
     border-radius: 8px;
-    
     overflow: visible;
 }
 
 .modalPack{
     margin-top: 460px;
+}
+
+ul{
+    float: right;
 }
 
 .navbar-light .navbar-nav .nav-link.active,
@@ -73,13 +75,15 @@ select{
 
 .logo {
     margin: 10px;
-    width: 150px;
+    width: 300px;
     height: 100%;
     margin-top: 0px;
 }
 
 .footer {
     background-color: #34393c;
+    
+    
 }
 
 .btn {
@@ -134,6 +138,14 @@ select{
     border-radius: 4px;
 }
 
+.btnComprar{
+    padding: 0px 10px;
+    margin: 10px;
+    height: 44px;
+    border-radius: 4px;
+
+}
+
 .card-body {
     background-color: #e3b52c;
     border-radius: 4px;
@@ -156,7 +168,17 @@ h5 {
     padding: 2px;
 }
 
-#contenedorProductos {
+#contenedorProductos, #filtros {
     margin-right: 0px;
     padding-right: 0px;
+    display: none;
+}
+
+.checkVino {
+    color: #e3b52c;
+}
+
+.navbar-toggler{
+    background-color: #e3b52c;
+    opacity: 0.8;
 }

@@ -4,10 +4,16 @@ let total = document.getElementById("precioTotal");
 let cantidadCarrito = document.getElementById("cantidadCarrito");
 let cantEnCart = document.getElementById("cantEnCart");
 let botonEliminar = document.getElementById("botonEliminar")
-const vinoTinto = listaVino.filter(vino => vino.tipoVino == "tinto");
-console.log(vinoTinto);
-const vinoBlanco = listaVino.filter(vino => vino.tipoVino == "blanco");
-console.log(vinoBlanco);
+// const vinoTinto = listaVino.filter(vino => vino.tipoVino == "tinto");
+// console.log(vinoTinto);
+// const vinoBlanco = listaVino.filter(vino => vino.tipoVino == "blanco");
+// console.log(vinoBlanco);
+let mostrar = document.getElementById("mostrarProductos");
+let filtros = document.getElementById("filtros")
+mostrar.addEventListener("click", (e) => {
+    contenedorProductos.style.display = 'flex';
+    filtros.style.display = 'block'
+})
 
 
 function setStorage(clave, valor) {
@@ -18,37 +24,69 @@ function getStorage(clave) {
     return JSON.parse(localStorage.getItem(clave)) || []
 }
 
+const obtenerDatos = async () => {
+    try {
+        let response = await fetch('../asset/stock.json');
+        let data = await response.json();
+        data.forEach(item => {
+            console.log(item.stock)
+            contenedorProductos.innerHTML += "";
+            let div = document.createElement("div");
+            div.className = "col-12 col-md-4 mt-3"
+            div.innerHTML = `<div class="card " style="width: 20rem">
+            <img class="card-img-top" src="${item.img}">
+            <div class="card-body">
+            <h4 class="card-title">${item.marca} </h4>
+            <h5 class="card-title">${item.varietal} </h5>
+            <p class="card-text">Enjoy the taste of the finest wine</p>
+            <p>$ ${item.precio}</p>
+            <button id="${item.id}" class="btnProd">Add to Cart</button>
+            </div>
+            </div>`
+            contenedorProductos.appendChild(div);
 
-function mostrarProducto(listaVino) {
-    contenedorProductos.innerHTML = "";
-    listaVino.forEach(item => {
+            let btnAgregar = document.getElementById(`${item.id}`);
+            btnAgregar.addEventListener('click', () => {
+                cart(item)
 
-        let div = document.createElement("div");
-        div.className = "col-12 col-md-4 mt-3"
-        div.innerHTML = `<div class="card " style="width: 20rem">
-        <img class="card-img-top" src="${item.img}">
-        <div class="card-body">
-        <h4 class="card-title">${item.marca} </h4>
-        <h5 class="card-title">${item.varietal} </h5>
-        <p class="card-text">Enjoy the taste of the finest wine</p>
-        <p>$ ${item.precio}</p>
-        <button id="${item.id}" class="btnProd">Add to Cart</button>
-        </div>
-        </div>`
-        contenedorProductos.appendChild(div);
-
-        let btnAgregar = document.getElementById(`${item.id}`);
-        btnAgregar.addEventListener('click', () => {
-            cart(item)
+            })
         })
-    })
+    } catch (error) {
+        console.log(error)
+    }
 }
+
+obtenerDatos()
+// function mostrarProducto(listaVino) {
+//     contenedorProductos.innerHTML = "";
+// listaVino.forEach(item => {
+
+//     let div = document.createElement("div");
+//     div.className = "col-12 col-md-4 mt-3"
+//     div.innerHTML = `<div class="card " style="width: 20rem">
+//     <img class="card-img-top" src="${item.img}">
+//     <div class="card-body">
+//     <h4 class="card-title">${item.marca} </h4>
+//     <h5 class="card-title">${item.varietal} </h5>
+//     <p class="card-text">Enjoy the taste of the finest wine</p>
+//     <p>$ ${item.precio}</p>
+//     <button id="${item.id}" class="btnProd">Add to Cart</button>
+//     </div>
+//     </div>`
+//     contenedorProductos.appendChild(div);
+
+//     let btnAgregar = document.getElementById(`${item.id}`);
+//     btnAgregar.addEventListener('click', () => {
+//         cart(item)
+//     })
+// })
+// }
 
 
 
 // mostrarProducto(vinoTinto)
 // mostrarProducto(vinoBlanco)
-mostrarProducto(listaVino);
+// mostrarProducto(listaVino);
 mostrarCarrito();
 contadorCarrito();
 
@@ -80,10 +118,13 @@ function cart(vino) {
     }
 
 }
+cart()
 
 function mostrarCarrito() {
     let carrito = getStorage('carrito');
-    
+    if (cantEnCart.innerText === '0') {
+        contenedorCarrito.innerText = 'Shopping cart empty'
+    } else {
         contenedorCarrito.innerHTML = "";
         carrito.forEach(vino => {
             let div = document.createElement("div");
@@ -102,7 +143,9 @@ function mostrarCarrito() {
                 checkDelete(vino, btnEliminar);
             })
         })
-    
+
+    }
+
 }
 
 function eliminar(vino, btnEliminar) {
@@ -166,6 +209,64 @@ function filtrar(e) {
 }
 window.addEventListener('input', filtrar);
 
+document.getElementById('checkTinto').addEventListener('change', (e) => {
+    if (e.target.checked == true) {
+        document.getElementById('checkBlanco').checked = false
+        mostrarProducto(vinoTinto)
+    } else {
+        mostrarProducto(listaVino)
+    }
+})
+document.getElementById('checkBlanco').addEventListener('change', (e) => {
+    if (e.target.checked == true) {
+        document.getElementById('checkTinto').checked = false
+        mostrarProducto(vinoBlanco)
+    } else {
+        mostrarProducto(listaVino)
+    }
+})
+
+function buy() {
+    let btnComprar = document.getElementById('botonComprar')
+    btnComprar.addEventListener('click', () => {
+        if (cantEnCart.innerText > 0) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Thanks for your purchase'
+            })
+        } else {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: 'Shopping cart it is empty'
+            })
+        }
+    })
+}
+buy()
 
 function contadorCarrito() {
     let carrito = getStorage('carrito');
